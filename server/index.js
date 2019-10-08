@@ -45,7 +45,7 @@ app.get('*.js', (req, res, next) => {
 
 /** general error handler */
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   res.status(err.status || 500);
 
   return res.json({

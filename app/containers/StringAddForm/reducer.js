@@ -3,7 +3,7 @@
  *
  * This reducer takes care of actions relating to adding
  * strings to the database (ADD_STRING, ADD_STRING_SUCCESS,
- * and ADD_STRING_FAILURE)
+ * ADD_STRING_FAILURE, and ADD_STRING_FAILURE)
  *
  */
 
@@ -11,6 +11,7 @@ import {
   ADD_STRING,
   ADD_STRING_SUCCESS,
   ADD_STRING_FAILURE,
+  ADD_STRING_RESET,
 } from './constants';
 
 export const initialState = {
@@ -39,6 +40,8 @@ const stringAddFormReducer = (state = initialState, action) => {
         strings: null,
         error: action.error,
       };
+    case ADD_STRING_RESET:
+      return initialState;
     default:
       return state;
   }

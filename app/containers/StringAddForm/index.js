@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -18,7 +18,7 @@ import {
   makeSelectUpdated,
   makeSelectStringAddError,
 } from './selectors';
-import { ADD_STRING } from './constants';
+import { ADD_STRING, ADD_STRING_RESET } from './constants';
 
 import Form from '../../components/Form';
 
@@ -27,10 +27,26 @@ import saga from './saga';
 
 const key = 'stringAddForm';
 
-export function StringAddForm({ updating, updated, error, addString }) {
+export function StringAddForm({
+  updating,
+  updated,
+  error,
+  addString,
+  resetAdd,
+}) {
   useInjectSaga({ key, saga });
 
   const [string, setString] = useState('');
+
+  useEffect(() => {
+    if (updating && !updated) {
+      updateStatus = 'Updating...';
+    } else if (!updating && updated && error) {
+      updateStatus = 'There was an error adding the string...';
+    } else if (!updating && updated) {
+      updateStatus = 'String added!';
+    }
+  }, [updating, updated, error]);
 
   // for updating state for controlled form
   const handleChange = evt => {
@@ -69,7 +85,6 @@ export function StringAddForm({ updating, updated, error, addString }) {
     name: 'Add',
   };
 
-  // define update status message
   let updateStatus = null;
 
   if (updating && !updated) {
@@ -79,6 +94,8 @@ export function StringAddForm({ updating, updated, error, addString }) {
   } else if (!updating && updated) {
     updateStatus = 'String added!';
   }
+
+  useEffect(() => () => resetAdd(), []);
 
   return (
     <React.Fragment>
@@ -100,6 +117,7 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     addString: string => dispatch({ type: ADD_STRING, string }),
+    resetAdd: () => dispatch({ type: ADD_STRING_RESET }),
   };
 }
 
@@ -108,6 +126,7 @@ StringAddForm.propTypes = {
   updated: PropTypes.bool,
   error: PropTypes.object,
   addString: PropTypes.func,
+  resetAdd: PropTypes.func,
 };
 
 // I attempted to use the useInjectReducer hook, but it was not

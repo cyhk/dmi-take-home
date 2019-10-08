@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 
 import { StringAddForm, mapDispatchToProps } from '../index';
-import { ADD_STRING } from '../constants';
+import { ADD_STRING, ADD_STRING_RESET } from '../constants';
 import configureStore from '../../../configureStore';
 
 describe('<StringAddForm />', () => {
@@ -25,7 +25,12 @@ describe('<StringAddForm />', () => {
     } = render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <StringAddForm updating={false} updated={false} error={null} />
+          <StringAddForm
+            updating={false}
+            updated={false}
+            error={null}
+            resetAdd={jest.fn()}
+          />
         </IntlProvider>
       </Provider>,
     );
@@ -42,7 +47,12 @@ describe('<StringAddForm />', () => {
     const component = render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <StringAddForm updating={false} updated={false} error={null} />
+          <StringAddForm
+            updating={false}
+            updated={false}
+            error={null}
+            resetAdd={jest.fn()}
+          />
         </IntlProvider>
       </Provider>,
     );
@@ -56,7 +66,12 @@ describe('<StringAddForm />', () => {
     const component = render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <StringAddForm updating={false} updated={false} error={null} />
+          <StringAddForm
+            updating={false}
+            updated={false}
+            error={null}
+            resetAdd={jest.fn()}
+          />
         </IntlProvider>
       </Provider>,
     );
@@ -83,6 +98,21 @@ describe('<StringAddForm />', () => {
         const string = 'test';
         result.addString(string);
         expect(dispatch).toHaveBeenCalledWith({ type: ADD_STRING, string });
+      });
+    });
+
+    describe('resetAdd', () => {
+      it('should be injected', () => {
+        const dispatch = jest.fn();
+        const result = mapDispatchToProps(dispatch);
+        expect(result.resetAdd).toBeDefined();
+      });
+
+      it('should dispatch ADD_STRING when called', () => {
+        const dispatch = jest.fn();
+        const result = mapDispatchToProps(dispatch);
+        result.resetAdd();
+        expect(dispatch).toHaveBeenCalledWith({ type: ADD_STRING_RESET });
       });
     });
   });
