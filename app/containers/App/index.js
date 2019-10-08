@@ -8,11 +8,11 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
+import NavBar from 'containers/NavBar/Loadable';
 import StringsList from 'containers/StringsList/Loadable';
-import StringsAddForm from 'containers/StringsAddForm/Loadable';
+import StringAddForm from 'containers/StringAddForm/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
@@ -20,10 +20,13 @@ import GlobalStyle from '../../global-styles';
 export default function App() {
   return (
     <div>
+      <NavBar />
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/">
+          <Redirect to="/strings" />
+        </Route>
         <Route exact path="/strings" component={StringsList} />
-        <Route exact path="/strings/new" component={StringsAddForm} />
+        <Route exact path="/strings/new" component={StringAddForm} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

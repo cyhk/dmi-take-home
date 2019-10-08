@@ -1,15 +1,19 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import NavBarContainer from '../../components/NavBar';
 
 export default function NavBar() {
-  return (
-    <nav>
-      <NavLink exact to="/strings">
-        All strings
-      </NavLink>
-      <NavLink exact to="/strings/new">
-        Add string
-      </NavLink>
-    </nav>
-  );
+  const links = [
+    {
+      id: 'link-1',
+      path: '/strings',
+      name: 'All strings',
+    },
+    {
+      id: 'link-2',
+      path: '/strings/new',
+      name: 'Add string',
+    },
+  ];
+
+  return <NavBarContainer links={links} />;
 }
