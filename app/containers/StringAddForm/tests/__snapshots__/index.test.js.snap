@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StringAddForm /> should render and match the snapshot 1`] = `
+<form
+  class="Wrapper-sc-60yovz-0 gOUjES"
+>
+  <div>
+    <label
+      class="Label-vify0n-0 GSYfe"
+      for="string"
+    >
+      New string:
+    </label>
+    <input
+      class="Input-sc-19txxuq-0 gGqJwk"
+      id="string"
+      name="String"
+      type="text"
+      value=""
+    />
+  </div>
+  <button
+    class="Button-sc-1fkoyq4-0 fmLlsE"
+    type="submit"
+  >
+    Add
+  </button>
+</form>
+`;

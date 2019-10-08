@@ -9,7 +9,10 @@ export default function* getStringsWatcherSaga() {
   yield takeLatest(GET_STRINGS, getStringsWorkerSaga);
 }
 
-function* getStringsWorkerSaga() {
+/**
+ *  gets strings from server
+ */
+export function* getStringsWorkerSaga() {
   try {
     const response = yield call(getStringsFromApi);
     const { strings } = response.data;
@@ -22,6 +25,9 @@ function* getStringsWorkerSaga() {
   }
 }
 
+/**
+ * Helper function to get strings from server
+ */
 function getStringsFromApi() {
   return axios.get('/api/strings');
 }

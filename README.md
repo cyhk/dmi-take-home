@@ -30,10 +30,10 @@ Start server:
 npm start
 ```
 
-<!-- Run tests:
+Run tests:
 ```
 npm test
-``` -->
+```
 
 ## API Reference
 

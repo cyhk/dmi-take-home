@@ -10,19 +10,19 @@ const selectAddString = state => state.stringAddForm || initialState;
 const makeSelectUpdating = () =>
   createSelector(
     selectAddString,
-    addStringsState => addStringsState.updating,
+    addStringState => addStringState.updating,
   );
 
 const makeSelectUpdated = () =>
   createSelector(
     selectAddString,
-    addStringsState => addStringsState.updated,
+    addStringState => addStringState.updated,
   );
 
 const makeSelectStringAddError = () =>
   createSelector(
     selectAddString,
-    addStringsState => addStringsState.error,
+    addStringState => addStringState.error,
   );
 
 export {

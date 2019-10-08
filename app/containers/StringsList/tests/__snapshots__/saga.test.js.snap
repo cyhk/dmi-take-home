@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getStringsWorkerSaga should call the stringAddingError action if the response errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
+
+exports[`getStringsWorkerSaga should dispatch the stringAdded action if it posts the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;

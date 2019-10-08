@@ -9,7 +9,12 @@ export default function* addStringWatcherSaga() {
   yield takeLatest(ADD_STRING, addStringWorkerSaga);
 }
 
-function* addStringWorkerSaga({ string }) {
+/**
+ *  add string to server
+ *
+ * Input: { string } (passed from action)
+ */
+export function* addStringWorkerSaga({ string }) {
   try {
     const response = yield call(addStringThroughApi, string);
     const { strings } = response.data;
@@ -20,6 +25,9 @@ function* addStringWorkerSaga({ string }) {
   }
 }
 
+/**
+ * Helper function to add string to server
+ */
 function addStringThroughApi(string) {
   return axios.post('/api/strings', { string });
 }

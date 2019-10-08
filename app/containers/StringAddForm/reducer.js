@@ -1,3 +1,12 @@
+/*
+ * StringAddFormReducer
+ *
+ * This reducer takes care of actions relating to adding
+ * strings to the database (ADD_STRING, ADD_STRING_SUCCESS,
+ * and ADD_STRING_FAILURE)
+ *
+ */
+
 import {
   ADD_STRING,
   ADD_STRING_SUCCESS,

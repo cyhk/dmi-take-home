@@ -16,7 +16,7 @@ describe('StringAddForm actions', () => {
   });
 
   describe('stringAddingError', () => {
-    it('should return the correct type and the passed name', () => {
+    it('should return the correct type and the passed error', () => {
       const fixture = 'TestError';
       const expectedResult = {
         type: ADD_STRING_FAILURE,

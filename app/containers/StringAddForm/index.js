@@ -27,7 +27,7 @@ import saga from './saga';
 
 const key = 'stringAddForm';
 
-const StringAddForm = ({ updating, updated, error, addString }) => {
+export function StringAddForm({ updating, updated, error, addString }) {
   useInjectSaga({ key, saga });
 
   const [string, setString] = useState('');
@@ -89,7 +89,7 @@ const StringAddForm = ({ updating, updated, error, addString }) => {
       />
     </React.Fragment>
   );
-};
+}
 
 const mapStateToProps = createStructuredSelector({
   updating: makeSelectUpdating(),
@@ -97,14 +97,16 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectStringAddError(),
 });
 
-const mapDispatchToProps = dispatch => ({
-  addString: string => dispatch({ type: ADD_STRING, string }),
-});
+export function mapDispatchToProps(dispatch) {
+  return {
+    addString: string => dispatch({ type: ADD_STRING, string }),
+  };
+}
 
 StringAddForm.propTypes = {
   updating: PropTypes.bool,
   updated: PropTypes.bool,
-  error: PropTypes.string,
+  error: PropTypes.object,
   addString: PropTypes.func,
 };
 

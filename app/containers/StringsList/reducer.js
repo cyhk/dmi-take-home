@@ -1,3 +1,12 @@
+/*
+ * StringsListReducer
+ *
+ * This reducer takes care of actions relating to getting
+ * strings from the database (GET_STRINGS, GET_STRINGS_SUCCESS,
+ * and GET_STRINGS_FAILURE)
+ *
+ */
+
 import {
   GET_STRINGS,
   GET_STRINGS_SUCCESS,

@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -28,13 +28,10 @@ import saga from './saga';
 
 const key = 'stringsList';
 
-const StringsList = ({ strings, fetching, error, getStrings }) => {
+export function StringsList({ strings, fetching, error, getStrings }) {
   useInjectSaga({ key, saga });
-  const [stringsLength, setStringLength] = useState(0);
 
-  if (strings && stringsLength !== strings.length)
-    setStringLength(strings.length);
-
+  // get strings from API with useEffect
   useEffect(() => {
     getStrings();
   }, []);
@@ -48,7 +45,7 @@ const StringsList = ({ strings, fetching, error, getStrings }) => {
       )}
     </React.Fragment>
   );
-};
+}
 
 const mapStateToProps = createStructuredSelector({
   strings: makeSelectStrings(),
@@ -56,14 +53,16 @@ const mapStateToProps = createStructuredSelector({
   error: makeSelectStringsError(),
 });
 
-const mapDispatchToProps = dispatch => ({
-  getStrings: () => dispatch({ type: GET_STRINGS }),
-});
+export function mapDispatchToProps(dispatch) {
+  return {
+    getStrings: () => dispatch({ type: GET_STRINGS }),
+  };
+}
 
 StringsList.propTypes = {
   strings: PropTypes.array,
   fetching: PropTypes.bool,
-  error: PropTypes.string,
+  error: PropTypes.object,
   getStrings: PropTypes.func,
 };
 
