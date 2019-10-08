@@ -1,19 +1,23 @@
 /**
  * StringAddForm
  *
- * This component is loaded when the user reaches the /strings/new page
+ * This component is loaded when the user reaches /strings/new
  *
  */
 
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
 import injectReducer from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeSelectUpdating } from 'containers/App/selectors';
-import { compose } from 'redux';
+import {
+  makeSelectUpdating,
+  makeSelectUpdated,
+  makeSelectStringAddError,
+} from './selectors';
 import { ADD_STRING } from './constants';
 
 import Form from '../../components/Form';
@@ -23,7 +27,7 @@ import saga from './saga';
 
 const key = 'stringAddForm';
 
-const StringAddForm = ({ updating, addString }) => {
+const StringAddForm = ({ updating, updated, error, addString }) => {
   useInjectSaga({ key, saga });
 
   const [string, setString] = useState('');
@@ -44,6 +48,7 @@ const StringAddForm = ({ updating, addString }) => {
     setString('');
   };
 
+  // define input fields
   const inputGroups = [
     {
       label: { htmlFor: 'string', name: 'New string:' },
@@ -57,19 +62,21 @@ const StringAddForm = ({ updating, addString }) => {
     },
   ];
 
+  // define submit button behavior
   const submitButton = {
     type: 'submit',
     onClick: handleSubmit,
     name: 'Add',
   };
 
+  // define update status message
   let updateStatus = null;
 
-  if (updating === 'updating') {
+  if (updating && !updated) {
     updateStatus = 'Updating...';
-  } else if (updating === 'failed') {
+  } else if (!updating && updated && error) {
     updateStatus = 'There was an error adding the string...';
-  } else if (updating === 'finished') {
+  } else if (!updating && updated) {
     updateStatus = 'String added!';
   }
 
@@ -86,6 +93,8 @@ const StringAddForm = ({ updating, addString }) => {
 
 const mapStateToProps = createStructuredSelector({
   updating: makeSelectUpdating(),
+  updated: makeSelectUpdated(),
+  error: makeSelectStringAddError(),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -93,7 +102,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 StringAddForm.propTypes = {
-  updating: PropTypes.string,
+  updating: PropTypes.bool,
+  updated: PropTypes.bool,
+  error: PropTypes.string,
   addString: PropTypes.func,
 };
 

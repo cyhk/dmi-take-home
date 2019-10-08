@@ -1,7 +1,7 @@
 import React from 'react';
-import NavBarContainer from '../../components/NavBar';
+import NavBar from '../NavBar';
 
-export default function NavBar() {
+export default function NavBarContainer() {
   const links = [
     {
       id: 'link-1',
@@ -15,5 +15,5 @@ export default function NavBar() {
     },
   ];
 
-  return <NavBarContainer links={links} />;
+  return <NavBar links={links} />;
 }

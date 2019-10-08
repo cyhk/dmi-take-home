@@ -1,3 +1,21 @@
+/**
+ * NavBar component
+ *
+ * Generates a NavBar with links from information passed
+ * in as props
+ *
+ * Props:
+ *  links:
+ *  [
+ *    {
+ *      id,
+ *      path,
+ *      name,
+ *    }, ...
+ *  ];
+ *
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import Wrapper from './Wrapper';

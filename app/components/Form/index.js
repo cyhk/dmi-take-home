@@ -1,3 +1,34 @@
+/**
+ * Form component
+ *
+ * Generates a form from passed in props (inputGroups,
+ * submitButton, and updateStatus)
+ *
+ * Props:
+ *  inputGroups:
+ *  [
+ *    {
+ *      label: { htmlFor, name },
+ *      input: {
+ *        name,
+ *        id,
+ *        type,
+ *        value,
+ *        onChange,
+ *      },
+ *    }
+ *  ]
+ *
+ *  submitButton: {
+ *    type,
+ *    onClick,
+ *    name,
+ *  }
+ *
+ *  updateStatus: string
+ *
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import Wrapper from './Wrapper';

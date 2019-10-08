@@ -1,7 +1,7 @@
 # DMI Take Home
 
 This app pings an api to retrieve strings, and provides the ability to prepend a string to the list of strings
-with a form
+with a form.
 
 ## Tech/framework used
 

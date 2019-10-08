@@ -10,9 +10,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import NavBar from 'containers/NavBar/Loadable';
-import StringsList from 'containers/StringsList/Loadable';
-import StringAddForm from 'containers/StringAddForm/Loadable';
+import NavBar from 'components/NavBarContainer';
+import StringsList from 'containers/StringsList';
+import StringAddForm from 'containers/StringAddForm';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';

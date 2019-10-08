@@ -7,19 +7,26 @@ import {
 export const initialState = {
   strings: null,
   updating: false,
+  updated: false,
   error: null,
 };
 
 const stringAddFormReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_STRING:
-      return { ...state, updating: 'updating', error: null };
+      return { ...state, updating: true, updated: false, error: null };
     case ADD_STRING_SUCCESS:
-      return { ...state, updating: 'finished', strings: action.strings };
+      return {
+        ...state,
+        updating: false,
+        updated: true,
+        strings: action.strings,
+      };
     case ADD_STRING_FAILURE:
       return {
         ...state,
-        updating: 'failed',
+        updating: false,
+        updated: true,
         strings: null,
         error: action.error,
       };

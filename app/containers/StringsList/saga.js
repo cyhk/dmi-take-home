@@ -1,11 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-import {
-  GET_STRINGS,
-  // GET_STRINGS_SUCCESS,
-  // GET_STRINGS_FAILURE,
-} from './constants';
+import { GET_STRINGS } from './constants';
 
 import { stringsLoaded, stringsLoadingError } from './actions';
 

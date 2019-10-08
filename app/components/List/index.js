@@ -1,5 +1,13 @@
-import React from 'react';
+/**
+ * List component
+ *
+ * Generates a list from an array passed in as a prop
+ *
+ * Props:
+ *   items: [ item1, ...]
+ */
 
+import React from 'react';
 import PropTypes from 'prop-types';
 import Ul from './Ul';
 import ListItem from '../ListItem';

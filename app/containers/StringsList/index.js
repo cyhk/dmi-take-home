@@ -7,21 +7,21 @@
 
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
 import injectReducer from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { compose } from 'redux';
 import {
   makeSelectStrings,
   makeSelectFetching,
   makeSelectStringsError,
-} from 'containers/App/selectors';
+} from './selectors';
 import { GET_STRINGS } from './constants';
 
 import List from '../../components/List';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import LoadingMessage from '../../components/LoadingMessage';
 
 import reducer from './reducer';
 import saga from './saga';
@@ -41,7 +41,7 @@ const StringsList = ({ strings, fetching, error, getStrings }) => {
 
   return (
     <React.Fragment>
-      {fetching && <LoadingSpinner />}
+      {fetching && <LoadingMessage />}
       {!fetching && strings && <List items={strings} />}
       {!fetching && error && (
         <div>There was an error trying to fetch the strings...</div>

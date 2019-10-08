@@ -2,11 +2,25 @@
 
 exports[`<App /> should render and match the snapshot 1`] = `
 <div>
+  <NavBarContainer />
   <Switch>
+    <Route
+      exact={true}
+      path="/"
+    >
+      <Redirect
+        to="/strings"
+      />
+    </Route>
     <Route
       component={[Function]}
       exact={true}
-      path="/"
+      path="/strings"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/strings/new"
     />
     <Route
       component={[Function]}
