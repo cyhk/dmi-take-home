@@ -37,16 +37,7 @@ export function StringAddForm({
   useInjectSaga({ key, saga });
 
   const [string, setString] = useState('');
-
-  useEffect(() => {
-    if (updating && !updated) {
-      updateStatus = 'Updating...';
-    } else if (!updating && updated && error) {
-      updateStatus = 'There was an error adding the string...';
-    } else if (!updating && updated) {
-      updateStatus = 'String added!';
-    }
-  }, [updating, updated, error]);
+  useEffect(() => () => resetAdd(), []);
 
   // for updating state for controlled form
   const handleChange = evt => {
@@ -94,8 +85,6 @@ export function StringAddForm({
   } else if (!updating && updated) {
     updateStatus = 'String added!';
   }
-
-  useEffect(() => () => resetAdd(), []);
 
   return (
     <React.Fragment>
