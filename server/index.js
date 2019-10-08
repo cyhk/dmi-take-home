@@ -43,6 +43,17 @@ app.get('*.js', (req, res, next) => {
   next();
 });
 
+/** general error handler */
+/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+
+  return res.json({
+    status: err.status,
+    message: err.message,
+  });
+});
+
 // Start your app.
 app.listen(port, host, async err => {
   if (err) {
