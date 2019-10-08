@@ -37,6 +37,9 @@ export function StringAddForm({
   useInjectSaga({ key, saga });
 
   const [string, setString] = useState('');
+
+  // when the component unmounts, reset the redux state
+  // to its initial values
   useEffect(() => () => resetAdd(), []);
 
   // for updating state for controlled form
@@ -76,6 +79,7 @@ export function StringAddForm({
     name: 'Add',
   };
 
+  // define updat status
   let updateStatus = null;
 
   if (updating && !updated) {
