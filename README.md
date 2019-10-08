@@ -1,6 +1,6 @@
 # DMI Take Home
 
-This app pings an api to retrieve strings, and provides the ability to prepend a string to the list of strings
+This app pings an API to retrieve strings, and provides the ability to prepend a string to the list of strings
 with a form.
 
 ## Tech/framework used
@@ -45,4 +45,4 @@ Output: `{ strings: [ string1, ... ] }`
 **POST /api/strings**
 Prepends a new string to the existing strings array
 
-Output: `{ strings: [ string1, ..., newString ] }`
+Output: `{ strings: [  newString, string1, ... ] }`

@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
  * current array of strings
  *
  * Input: { string }
- * Output:  { strings: [ string1, ..., newString ] }
+ * Output:  { strings: [ newString, string1, ... ] }
  */
 router.post('/', (req, res, next) => {
   let response = null;
